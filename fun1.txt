@@ -1,1 +1,3 @@
 fun1.txt
+
+push 1 to test the actions.yml

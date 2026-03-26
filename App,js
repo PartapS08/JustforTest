@@ -5,6 +5,7 @@ async function initializeDatabase() {
 /* DB connection variables */
     const clusterUrl = process.env['MONGODB_CLUSTER_URL'];
     const authMechanism = process.env['MONGODB_AUTH_MECHANISM'];
+	const keyVaultUrl = process.env['KEY_VAULT_URL'];
 
     /* Authenticate using Managed Identity */
     const credential = new ManagedIdentityCredential();

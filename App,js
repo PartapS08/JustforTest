@@ -12,7 +12,7 @@ async function initializeDatabase() {
     const client = new SecretClient(keyVaultUrl, credential);
     try {
         // ✅ Use full Secret Identifier instead of name
-        const secretIdentifier = process.env['KEYVAULT_SECRET_IDENTIFIER'];;
+        const secretIdentifier = process.env['KEYVAULT_SECRET_IDENTIFIER'];
         const secret = await client.getSecret(secretIdentifier);
         const dbPassword = secret.value;
 

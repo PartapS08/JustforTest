@@ -1,0 +1,49 @@
+"const { ManagedIdentityCredential } = require(""@azure/identity"");
+const { SecretClient } = require(""@azure/keyvault-secrets"");
+async function initializeDatabase() {
+    /*---------------------- Mongo cluster connection LATEST ---------------*/
+/* DB connection variables */
+    const clusterUrl = process.env['MONGODB_CLUSTER_URL'];
+    const authMechanism = process.env['MONGODB_AUTH_MECHANISM'];
+
+    /* Authenticate using Managed Identity */
+    const credential = new ManagedIdentityCredential();
+    const client = new SecretClient(keyVaultUrl, credential);
+    try {
+        // ✅ Use full Secret Identifier instead of name
+        const secretIdentifier = process.env['KEYVAULT_SECRET_IDENTIFIER'];;
+        const secret = await client.getSecret(secretIdentifier);
+        const dbPassword = secret.value;
+
+        // ✅ Build MongoDB URI using password from Key Vault
+        const DB_CLUSTER_URI = `mongodb+srv://${clusterUrl}/?authMechanism=${authMechanism}&tls=true&password=${encodeURIComponent(dbPassword)}`;
+
+        console.log(""DB URI constructed successfully"");"												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
+												
